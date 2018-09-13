@@ -1,0 +1,152 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>telecom</groupId>
+	<artifactId>telecom</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Radio Telecom</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<!-- Java version -->
+		<java.version>1.8</java.version>
+		<!-- Encoding configuration -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Maven plugins versions -->
+		<maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
+		<maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
+		<maven.war.plugin.version>3.0.0</maven.war.plugin.version>
+		<!-- Dependencies versions -->
+		<spring.version>4.3.4.RELEASE</spring.version>
+		<spring.integration.version>4.3.5.RELEASE</spring.integration.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jackson.version>1.9.13</jackson.version>
+		<junit.version>4.12</junit.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring Dependencies -->
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+	      	<version>2.0.4.RELEASE</version>
+		</dependency>
+		<dependency>
+	      	<groupId>org.springframework.boot</groupId>
+	      	<artifactId>spring-boot-starter-integration</artifactId>
+	      	<version>2.0.4.RELEASE</version>
+	    </dependency>
+		
+		<!-- Logging: Log4J -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.16</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		
+		
+		
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> 
+				<version>1.6</version> <executions> <execution> <id>xjc</id> <goals> <goal>xjc</goal> 
+				</goals> </execution> </executions> <configuration> <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory> 
+				<outputDirectory>${project.basedir}/src/main/java</outputDirectory> <clearOutputDir>false</clearOutputDir> 
+				</configuration> </plugin> -->
+			 <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-jar-plugin</artifactId>
+			        <version>3.1.0</version>
+			        <configuration>
+			          <archive>
+			            <index>true</index>
+			            <manifest>
+			              <addClasspath>true</addClasspath>
+			              <mainClass>com.telefonica.and.seneca.controller.ServerSideSocket</mainClass>
+			            </manifest>
+			            <manifestEntries>
+			              <mode>development</mode>
+			              <url>${project.url}</url>
+			              <key>value</key>
+			            </manifestEntries>
+			          </archive>
+			        </configuration>
+			      </plugin>
+			<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+		        <artifactId>maven-assembly-plugin</artifactId>
+		        <version>3.1.0</version>
+		        <configuration>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		          <archive>
+					  <manifest>
+						<mainClass>com.telefonica.and.seneca.controller.ServerSideSocket</mainClass>
+					  </manifest>
+					</archive>
+		        </configuration>
+		        <executions>
+		          <execution>
+		            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+		            <phase>package</phase> <!-- bind to the packaging phase -->
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		 </plugin>
+		</plugins>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+</project>
