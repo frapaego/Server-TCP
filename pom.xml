@@ -109,7 +109,7 @@
 			            <index>true</index>
 			            <manifest>
 			              <addClasspath>true</addClasspath>
-			              <mainClass>com.telefonica.and.seneca.controller.ServerSideSocket</mainClass>
+			              <mainClass>org.frapaego.servertcp.controller.ServerSideSocket</mainClass>
 			            </manifest>
 			            <manifestEntries>
 			              <mode>development</mode>
@@ -132,7 +132,7 @@
 		          </descriptorRefs>
 		          <archive>
 					  <manifest>
-						<mainClass>com.telefonica.and.seneca.controller.ServerSideSocket</mainClass>
+						<mainClass>org.frapaego.servertcp.controller.ServerSideSocket</mainClass>
 					  </manifest>
 					</archive>
 		        </configuration>

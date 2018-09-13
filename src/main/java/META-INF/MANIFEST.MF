@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
 Class-Path: 
-Main-Class: com.telefonica.and.seneca.controller.ServerSideSocket
+Main-Class: org.frapaego.servertcp.controller.ServerSideSocket

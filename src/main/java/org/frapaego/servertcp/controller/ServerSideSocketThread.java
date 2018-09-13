@@ -1,4 +1,4 @@
-package com.telefonica.and.seneca.controller;
+package org.frapaego.servertcp.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
