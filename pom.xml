@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>telecom</groupId>
-	<artifactId>telecom</artifactId>
+	<groupId>serverTCP</groupId>
+	<artifactId>serverTCP</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -78,10 +78,6 @@
 			</exclusions>
 		</dependency>
 		
-		
-		
-		
-		
 	</dependencies>
 
 	<build>
@@ -95,12 +91,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> 
-				<version>1.6</version> <executions> <execution> <id>xjc</id> <goals> <goal>xjc</goal> 
-				</goals> </execution> </executions> <configuration> <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory> 
-				<outputDirectory>${project.basedir}/src/main/java</outputDirectory> <clearOutputDir>false</clearOutputDir> 
-				</configuration> </plugin> -->
-			 <plugin>
+			<plugin>
 			        <groupId>org.apache.maven.plugins</groupId>
 			        <artifactId>maven-jar-plugin</artifactId>
 			        <version>3.1.0</version>
