@@ -22,10 +22,12 @@ public class ServerSideSocketThread extends Thread {
 
 	@Override
 	public void run() {
+		PrintWriter toClient = null;
+		BufferedReader fromClient = null;
 		try {
 			while (server.isConnected()) {
-				final PrintWriter toClient = new PrintWriter(server.getOutputStream(), true);
-				final BufferedReader fromClient = new BufferedReader(new InputStreamReader(server.getInputStream()));
+				toClient = new PrintWriter(server.getOutputStream(), true);
+				fromClient = new BufferedReader(new InputStreamReader(server.getInputStream()));
 				final String line = fromClient.readLine();
 				logger.info("Server received: " + line);
 
@@ -50,16 +52,22 @@ public class ServerSideSocketThread extends Thread {
 						logger.info("Server send: " + "[$4#|600400" + i
 								+ "|22/10/2006 14:15:11|32769|418210,16475565|441874,1574774|0]");
 					}
-					sleep(10000);
+					//sleep(10000);
 				}
-
-				toClient.close();
-				fromClient.close();
-				// server.close();
+				
 			}
 
-		} catch (final IOException | InterruptedException e) {
+		} catch (final IOException e) {
 			logger.error(e.getMessage(), e);
+		}
+		finally {
+			toClient.close();
+			try {
+				fromClient.close();
+				server.close();
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+			}
 		}
 	}
 
